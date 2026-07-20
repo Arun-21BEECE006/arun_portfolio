@@ -193,7 +193,7 @@
         "ReportLab"
       ],
       "status": "Complete",
-      "image": "project-1.png",
+      "image": "https://res.cloudinary.com/dmy3wdea9/image/upload/v1784551895/portfolio/projects/file_naagby.png",
       "links": {
         "demo": "",
         "repo": "https://github.com",
@@ -213,7 +213,7 @@
       "metrics": [],
       "duration": "",
       "featured": true,
-      "architectureDiagram": "http://localhost:8000/uploads/misc/1784537386612-Screenshot2026-07-15112349.png"
+      "architectureDiagram": ""
     },
     {
       "id": "jansetu",
