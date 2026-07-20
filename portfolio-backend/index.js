@@ -51,9 +51,9 @@ app.get("/api/github-stats", async (req, res) => {
 // ── Public content (read-only) ──────────────────────────────────────────
 // The frontend fetches everything it renders from here at runtime, so
 // admin edits go live immediately without a rebuild or redeploy.
-app.get("/api/content", (req, res) => {
+app.get("/api/content", async (req, res) => {
   try {
-    res.json(readContent());
+    res.json(await readContent());
   } catch (error) {
     console.error("Error reading content:", error.message);
     res.status(500).json({ error: "Could not read content" });
@@ -85,9 +85,9 @@ app.get("/api/admin/collections", requireAdmin, (req, res) => {
 });
 
 // ── Admin — singleton objects (profile, resume, conference) ─────────────
-app.put("/api/admin/singleton/:key", requireAdmin, (req, res) => {
+app.put("/api/admin/singleton/:key", requireAdmin, async (req, res) => {
   try {
-    res.json(updateSingleton(req.params.key, req.body));
+    res.json(await updateSingleton(req.params.key, req.body));
   } catch (error) {
     res.status(error.status || 500).json({ error: error.message });
   }
@@ -136,25 +136,25 @@ app.delete("/api/admin/media", requireAdmin, async (req, res) => {
 });
 
 // ── Admin CRUD — collections (projects, skillOrbs, experience, etc.) ────
-app.post("/api/admin/:collection", requireAdmin, (req, res) => {
+app.post("/api/admin/:collection", requireAdmin, async (req, res) => {
   try {
-    res.status(201).json(createItem(req.params.collection, req.body));
+    res.status(201).json(await createItem(req.params.collection, req.body));
   } catch (error) {
     res.status(error.status || 500).json({ error: error.message });
   }
 });
 
-app.put("/api/admin/:collection/:id", requireAdmin, (req, res) => {
+app.put("/api/admin/:collection/:id", requireAdmin, async (req, res) => {
   try {
-    res.json(updateItem(req.params.collection, req.params.id, req.body));
+    res.json(await updateItem(req.params.collection, req.params.id, req.body));
   } catch (error) {
     res.status(error.status || 500).json({ error: error.message });
   }
 });
 
-app.delete("/api/admin/:collection/:id", requireAdmin, (req, res) => {
+app.delete("/api/admin/:collection/:id", requireAdmin, async (req, res) => {
   try {
-    res.json(deleteItem(req.params.collection, req.params.id));
+    res.json(await deleteItem(req.params.collection, req.params.id));
   } catch (error) {
     res.status(error.status || 500).json({ error: error.message });
   }
