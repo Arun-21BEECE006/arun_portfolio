@@ -1,0 +1,678 @@
+{
+  "profile": {
+    "name": "Arun Kumar",
+    "roles": [
+      "Software Engineer",
+      "AI / ML Engineer",
+      "Full Stack Developer",
+      "Computer Vision Engineer"
+    ],
+    "location": "Coimbatore, Tamil Nadu, India",
+    "tagline": "I build systems that sense, decide, and ship \u2014 three-sided medical platforms, AI-powered civic tech, enterprise SaaS, and computer vision, end to end.",
+    "bio": [
+      "I'm an engineer working across the full stack: React/Next.js and Flask/Node on the outside, PostgreSQL and real business logic underneath, and applied AI/ML (LLM integrations, computer vision, sequence models) where it actually adds value rather than as decoration.",
+      "My recent work spans a three-sided telemedicine + organ-donation platform (VitalPath), an AI-powered civic-tech platform that matches citizens to government welfare schemes across 22 Indian languages (JanSetu), an enterprise HR/task-management SaaS with role-based approval chains and Claude-powered task summaries (DevLink), and an enterprise AI-software marketplace (NexaForge AI). Alongside that: embedded signal processing and computer vision projects that got me here in the first place.",
+      "I like problems where a sensor, a model, a database, and a clean UI all have to agree with each other \u2014 and I'm currently focused on deepening AI/ML engineering while shipping production-grade full-stack software."
+    ],
+    "email": "masterarun182@gmail.com",
+    "resumeFile": "resume.pdf",
+    "socials": {
+      "github": "https://github.com/Arun-21BEECE006",
+      "linkedin": "https://www.linkedin.com/in/arun-kumar-m-aa3350249/",
+      "twitter": "https://x.com/Master_Arun29",
+      "facebook": "https://www.facebook.com/profile.php?id=100013098244893"
+    },
+    "stats": [
+      {
+        "label": "Launched Projects",
+        "value": "10+"
+      },
+      {
+        "label": "GitHub Repositories",
+        "value": "12+"
+      },
+      {
+        "label": "Certifications",
+        "value": "6"
+      },
+      {
+        "label": "Conference Paper",
+        "value": "1"
+      }
+    ],
+    "experienceYears": ""
+  },
+  "skillOrbs": [
+    {
+      "id": "frontend",
+      "label": "Frontend",
+      "accent": "amber",
+      "skills": [
+        "React",
+        "Next.js 14",
+        "TypeScript",
+        "JavaScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Recharts",
+        "React Router"
+      ],
+      "icon": "layout"
+    },
+    {
+      "id": "backend",
+      "label": "Backend",
+      "accent": "teal",
+      "skills": [
+        "Node.js",
+        "Express",
+        "Flask",
+        "Python",
+        "REST APIs",
+        "Socket.IO (real-time)",
+        "JWT Auth",
+        "Stripe Payments"
+      ],
+      "icon": "server"
+    },
+    {
+      "id": "ai-ml",
+      "label": "AI / ML",
+      "accent": "teal",
+      "skills": [
+        "Anthropic Claude API / LLM integration",
+        "LSTM / Sequence Models",
+        "Eligibility / rules-based inference engines",
+        "Prompt engineering",
+        "Applied NLP"
+      ],
+      "icon": "brain"
+    },
+    {
+      "id": "computer-vision",
+      "label": "Computer Vision",
+      "accent": "amber",
+      "skills": [
+        "Real-time Object Detection",
+        "OpenCV",
+        "Image processing pipelines"
+      ],
+      "icon": "camera"
+    },
+    {
+      "id": "database",
+      "label": "Database",
+      "accent": "teal",
+      "skills": [
+        "PostgreSQL",
+        "MongoDB",
+        "SQLAlchemy",
+        "Prisma ORM",
+        "SQLite",
+        "SQL"
+      ],
+      "icon": "database"
+    },
+    {
+      "id": "cloud-devops",
+      "label": "Cloud & DevOps",
+      "accent": "amber",
+      "skills": [
+        "Docker & Docker Compose",
+        "Vercel",
+        "Render",
+        "Git / GitHub",
+        "CI-friendly project structure"
+      ],
+      "icon": "cloud"
+    },
+    {
+      "id": "languages",
+      "label": "Programming Languages",
+      "accent": "teal",
+      "skills": [
+        "C",
+        "C++",
+        "Java",
+        "Python",
+        "Swift",
+        "JavaScript / TypeScript"
+      ],
+      "icon": "code"
+    },
+    {
+      "id": "embedded",
+      "label": "Embedded Systems",
+      "accent": "amber",
+      "skills": [
+        "Embedded C",
+        "Microcontrollers (Arduino)",
+        "GSM/SMS Integration",
+        "VLSI / IC Design fundamentals",
+        "Sensor signal processing"
+      ],
+      "icon": "cpu"
+    }
+  ],
+  "projects": [
+    {
+      "id": "vitalpath",
+      "title": "VitalPath",
+      "subtitle": "Three-Sided Telemedicine & Organ-Donation Platform",
+      "category": "fullstack",
+      "tags": [
+        "React",
+        "Flask",
+        "PostgreSQL/SQLite",
+        "JWT",
+        "Telemedicine"
+      ],
+      "description": "A three-sided healthcare platform connecting patients, doctors, and hospitals \u2014 appointments, walk-in check-ins with OTP verification, family health records, secure messaging, reviews, and an organ-donation registry, all behind tiered subscription plans for each user type.",
+      "highlights": [
+        "Three distinct roles (patient / doctor / hospital) each with tiered subscription plans and their own permissions",
+        "End-to-end appointment system incl. walk-in OTP verification and prescription uploads",
+        "Medical report upload/download pipeline (PDF parsing with pdfplumber/PyPDF2)",
+        "Secure messaging with conversation invites between patients and doctors",
+        "Organ-donation registry module alongside the core medical marketplace",
+        "JWT-based auth (bcrypt password hashing) across all three roles"
+      ],
+      "techStack": [
+        "React 18",
+        "React Router",
+        "Recharts",
+        "Axios",
+        "Flask 3",
+        "Flask-JWT-Extended",
+        "Flask-SQLAlchemy",
+        "bcrypt",
+        "PyPDF2 / pdfplumber",
+        "ReportLab"
+      ],
+      "status": "Complete",
+      "image": "project-1.png",
+      "links": {},
+      "longDescription": "A three-sided healthcare platform connecting patients, doctors, and hospitals \u2014 appointments, walk-in check-ins with OTP verification, family health records, secure messaging, reviews, and an organ-donation registry, all behind tiered subscription plans for each user type.",
+      "gallery": [
+        "project-1.png"
+      ],
+      "challenges": [],
+      "architecture": "",
+      "futureImprovements": [],
+      "timeline": [],
+      "metrics": [],
+      "duration": "",
+      "featured": true
+    },
+    {
+      "id": "jansetu",
+      "title": "JanSetu",
+      "subtitle": "India's Government Benefits Bridge \u2014 AI + 22 Languages",
+      "category": "aiml",
+      "tags": [
+        "AI",
+        "Flask",
+        "React",
+        "Civic Tech",
+        "22 Languages"
+      ],
+      "description": "An AI-powered civic-tech platform that helps Indian citizens discover and apply for government welfare schemes. A rules-based + LLM-assisted eligibility engine matches citizens across 80+ seeded government schemes, with OTP login and full support for 22 Indian languages with instant switching.",
+      "highlights": [
+        "Eligibility engine that matches citizens to 80+ government schemes, with graceful fallback logic",
+        "OTP-based login flow (Twilio-ready for production SMS)",
+        "Full i18n across 22 Indian languages with instant, no-reload switching",
+        "Anthropic Claude API integration for AI-assisted guidance and a voice interface",
+        "Deployed live: PostgreSQL backend on Render, frontend on Render \u2014 with a custom domain"
+      ],
+      "techStack": [
+        "React",
+        "Vite",
+        "Flask",
+        "Flask-SQLAlchemy",
+        "Flask-JWT-Extended",
+        "PostgreSQL",
+        "Anthropic Claude API",
+        "Twilio",
+        "Flask-Mail"
+      ],
+      "status": "Live",
+      "image": "project-2.png",
+      "links": {
+        "demo": "https://jansetu.mooo.com"
+      },
+      "longDescription": "An AI-powered civic-tech platform that helps Indian citizens discover and apply for government welfare schemes. A rules-based + LLM-assisted eligibility engine matches citizens across 80+ seeded government schemes, with OTP login and full support for 22 Indian languages with instant switching.",
+      "gallery": [
+        "project-2.png"
+      ],
+      "challenges": [],
+      "architecture": "",
+      "futureImprovements": [],
+      "timeline": [],
+      "metrics": [],
+      "duration": "",
+      "featured": true
+    },
+    {
+      "id": "devlink",
+      "title": "DevLink",
+      "subtitle": "Enterprise HR & Task-Management SaaS",
+      "category": "fullstack",
+      "tags": [
+        "Flask",
+        "SocketIO",
+        "Stripe",
+        "AI",
+        "Multi-tenant SaaS"
+      ],
+      "description": "A multi-tenant company operations platform: role-based task management (Admin \u2192 Manager \u2192 Team Leader \u2192 Employee), a full leave-management approval chain, real-time team chat, a shared calendar, Stripe-based subscriptions, and Claude-powered AI task summaries and weekly reports.",
+      "highlights": [
+        "4-tier role hierarchy with scoped dashboards (Admin / Manager / Team Leader / Employee)",
+        "Kanban-style task board with subtasks, splitting, and an approve/reject workflow",
+        "Role-aware leave-approval chain with a team calendar of approved leave",
+        "Real-time chat and notifications via Flask-SocketIO, including system messages when someone leaves the company",
+        "AI features (task summaries, weekly reports) powered by the Anthropic Claude API, with a safe demo-mode fallback when no API key is set",
+        "2FA (TOTP/QR) authentication and Stripe subscription billing"
+      ],
+      "techStack": [
+        "Flask",
+        "Flask-SocketIO",
+        "Flask-SQLAlchemy",
+        "Flask-JWT-Extended",
+        "PyOTP (2FA)",
+        "Stripe",
+        "Anthropic Claude API",
+        "Flask-Mail"
+      ],
+      "status": "Complete",
+      "image": "project-3.png",
+      "links": {},
+      "longDescription": "A multi-tenant company operations platform: role-based task management (Admin \u2192 Manager \u2192 Team Leader \u2192 Employee), a full leave-management approval chain, real-time team chat, a shared calendar, Stripe-based subscriptions, and Claude-powered AI task summaries and weekly reports.",
+      "gallery": [
+        "project-3.png"
+      ],
+      "challenges": [],
+      "architecture": "",
+      "futureImprovements": [],
+      "timeline": [],
+      "metrics": [],
+      "duration": "",
+      "featured": true
+    },
+    {
+      "id": "nexaforge-ai",
+      "title": "NexaForge AI",
+      "subtitle": "Enterprise AI Software Marketplace",
+      "category": "fullstack",
+      "tags": [
+        "Next.js",
+        "TypeScript",
+        "Prisma",
+        "PostgreSQL",
+        "Docker"
+      ],
+      "description": "A production-structured monorepo marketplace for enterprise AI software \u2014 browse and inquire about projects, request custom builds, and manage everything through a single admin dashboard. Built with a modern typed stack and containerized for one-command deployment.",
+      "highlights": [
+        "Next.js 14 App Router frontend with dark/light glassmorphism UI, search, filters, and infinite scroll",
+        "Express + TypeScript REST API with Prisma ORM over PostgreSQL",
+        "Auto-detected purchase/custom-request inquiry forms with dual email notifications (customer + admin) via Nodemailer",
+        "Single JWT-secured admin dashboard with full CRUD for projects, inquiries, and analytics",
+        "SEO-complete: dynamic metadata, sitemap.xml, robots.txt, JSON-LD structured data",
+        "Fully Dockerized (Docker Compose) for local dev and one-command production deployment"
+      ],
+      "techStack": [
+        "Next.js 14",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Node.js",
+        "Express",
+        "Prisma ORM",
+        "PostgreSQL",
+        "Cloudinary",
+        "Nodemailer",
+        "Docker Compose"
+      ],
+      "status": "Complete",
+      "image": "project-4.png",
+      "links": {},
+      "longDescription": "A production-structured monorepo marketplace for enterprise AI software \u2014 browse and inquire about projects, request custom builds, and manage everything through a single admin dashboard. Built with a modern typed stack and containerized for one-command deployment.",
+      "gallery": [
+        "project-4.png"
+      ],
+      "challenges": [],
+      "architecture": "",
+      "futureImprovements": [],
+      "timeline": [],
+      "metrics": [],
+      "duration": "",
+      "featured": false
+    },
+    {
+      "id": "oral-cancer-lstm",
+      "title": "Oral Cancer Detector using LSTM",
+      "subtitle": "Healthcare AI \u2014 Sequence Modeling",
+      "category": "aiml",
+      "tags": [
+        "Python",
+        "LSTM",
+        "Healthcare AI"
+      ],
+      "description": "A sequence-model pipeline that screens for indicators of oral cancer from patient data, using an LSTM network to capture temporal/sequential patterns rather than a static classifier.",
+      "highlights": [
+        "Framed a healthcare screening problem as a sequence-modeling task",
+        "Built and evaluated an LSTM-based detection pipeline",
+        "Ongoing \u2014 actively iterating on accuracy and dataset quality"
+      ],
+      "techStack": [
+        "Python",
+        "LSTM (Keras/TensorFlow)",
+        "NumPy"
+      ],
+      "status": "Ongoing",
+      "image": "project-6.png",
+      "links": {
+        "demo": "https://drive.google.com/drive/folders/1xtdiboWYoKK1yNv76EfQi8pcAshbYmHo?usp=sharing"
+      },
+      "longDescription": "A sequence-model pipeline that screens for indicators of oral cancer from patient data, using an LSTM network to capture temporal/sequential patterns rather than a static classifier.",
+      "gallery": [
+        "project-6.png"
+      ],
+      "challenges": [],
+      "architecture": "",
+      "futureImprovements": [],
+      "timeline": [],
+      "metrics": [],
+      "duration": "",
+      "featured": false
+    },
+    {
+      "id": "object-detector-python",
+      "title": "Real-Time Object Detector",
+      "subtitle": "Computer Vision \u2014 Deployed Web App",
+      "category": "aiml",
+      "tags": [
+        "Python",
+        "Computer Vision",
+        "Deployment"
+      ],
+      "description": "A Python object-detection application deployed and served live, turning a trained detection model into something anyone can open in a browser and test.",
+      "highlights": [
+        "Trained and integrated an object detection model",
+        "Deployed as a live, publicly usable web app",
+        "Handled real-world inference constraints (speed, deployment limits)"
+      ],
+      "techStack": [
+        "Python",
+        "OpenCV",
+        "Flask",
+        "Railway (deployment)"
+      ],
+      "status": "Live",
+      "image": "project-2.png",
+      "links": {
+        "demo": "https://object-detector-project-production.up.railway.app",
+        "repo": "https://github.com/Arun-21BEECE006/Object-Detector-using-Python"
+      },
+      "longDescription": "A Python object-detection application deployed and served live, turning a trained detection model into something anyone can open in a browser and test.",
+      "gallery": [
+        "project-2.png"
+      ],
+      "challenges": [],
+      "architecture": "",
+      "futureImprovements": [],
+      "timeline": [],
+      "metrics": [],
+      "duration": "",
+      "featured": false
+    },
+    {
+      "id": "alcohol-detector-arduino",
+      "title": "Alcohol Detector with SMS Reporting",
+      "subtitle": "Embedded Systems",
+      "category": "embedded",
+      "tags": [
+        "Arduino",
+        "Embedded C",
+        "GSM"
+      ],
+      "description": "An embedded safety system: an Arduino-based sensor rig detects alcohol levels and reports results instantly via SMS \u2014 the project where signal processing met the real world.",
+      "highlights": [
+        "Designed sensor + microcontroller circuit for alcohol detection",
+        "Integrated GSM module for automatic SMS alerting",
+        "End-to-end hardware-to-notification pipeline"
+      ],
+      "techStack": [
+        "Arduino",
+        "Embedded C",
+        "GSM Module"
+      ],
+      "status": "Complete",
+      "image": "project-3.png",
+      "links": {
+        "demo": "https://drive.google.com/drive/u/0/folders/1vNISJbVtxlNbeNMkMiZUHUmBd9SC64L1",
+        "repo": "https://github.com/Arun-21BEECE006/ALCOHOL-DETECTOR-WITH-REPORTING-THROUGH-SMS-USING-ARDUINO---PROJECT"
+      },
+      "longDescription": "An embedded safety system: an Arduino-based sensor rig detects alcohol levels and reports results instantly via SMS \u2014 the project where signal processing met the real world.",
+      "gallery": [
+        "project-3.png"
+      ],
+      "challenges": [],
+      "architecture": "",
+      "futureImprovements": [],
+      "timeline": [],
+      "metrics": [],
+      "duration": "",
+      "featured": false
+    },
+    {
+      "id": "cutoff-calculator",
+      "title": "Cut-off Calculator",
+      "subtitle": "Web App",
+      "category": "software",
+      "tags": [
+        "React",
+        "Frontend"
+      ],
+      "description": "A fast, responsive web app that computes engineering-admission cut-off marks, built to save students the annual scramble with spreadsheets.",
+      "highlights": [
+        "Built entirely with React and deployed on Vercel",
+        "Clean, validated form UX for a genuinely useful daily-use tool"
+      ],
+      "techStack": [
+        "React",
+        "Vercel"
+      ],
+      "status": "Live",
+      "image": "project-1.png",
+      "links": {
+        "demo": "https://cut-off-calculator.vercel.app",
+        "repo": "https://github.com/Arun-21BEECE006/Cut-off-Calculator"
+      },
+      "longDescription": "A fast, responsive web app that computes engineering-admission cut-off marks, built to save students the annual scramble with spreadsheets.",
+      "gallery": [
+        "project-1.png"
+      ],
+      "challenges": [],
+      "architecture": "",
+      "futureImprovements": [],
+      "timeline": [],
+      "metrics": [],
+      "duration": "",
+      "featured": false
+    },
+    {
+      "id": "bookmark",
+      "title": "Bookmark",
+      "subtitle": "Web App",
+      "category": "software",
+      "tags": [
+        "React",
+        "Frontend"
+      ],
+      "description": "A lightweight bookmark-manager web app for saving, organizing, and quickly finding links \u2014 built as a focused frontend exercise in state and UX design.",
+      "highlights": [
+        "Responsive React interface",
+        "Deployed and publicly usable"
+      ],
+      "techStack": [
+        "React",
+        "Vercel"
+      ],
+      "status": "Live",
+      "image": "project-4.png",
+      "links": {
+        "demo": "https://bookmark-ak.vercel.app",
+        "repo": "https://github.com/Arun-21BEECE006/Bookmark_Project-2"
+      },
+      "longDescription": "A lightweight bookmark-manager web app for saving, organizing, and quickly finding links \u2014 built as a focused frontend exercise in state and UX design.",
+      "gallery": [
+        "project-4.png"
+      ],
+      "challenges": [],
+      "architecture": "",
+      "futureImprovements": [],
+      "timeline": [],
+      "metrics": [],
+      "duration": "",
+      "featured": false
+    }
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "title": "Web Development",
+      "company": "Motion Cut (Inside AICTE)",
+      "period": "Nov 2023 \u2013 Dec 2023",
+      "points": [
+        "Used HTML, CSS, and JavaScript across multiple web development tasks",
+        "Built business websites and validated registration forms, ensuring responsive design",
+        "Delivered a complete food-ordering website front to back"
+      ],
+      "type": "internship",
+      "location": "",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Embedded C",
+      "company": "Emglitz Technologies",
+      "period": "May 2023 \u2013 Jun 2023",
+      "points": [
+        "Implemented Embedded C across embedded-systems projects",
+        "Built skills in hardware-software integration for microcontroller-based systems"
+      ],
+      "type": "internship",
+      "location": "",
+      "technologies": [
+        "Embedded C"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "VLSI Design",
+      "company": "Sevael Technologies Pvt. Ltd.",
+      "period": "Jul 2022 \u2013 Aug 2022",
+      "points": [
+        "Worked on Very Large Scale Integration (VLSI) design using industry-standard EDA tools",
+        "Gained hands-on exposure to integrated-circuit and semiconductor design workflows"
+      ],
+      "type": "internship",
+      "location": "",
+      "technologies": [
+        "VLSI (EDA Tools)"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "id": 1,
+      "title": "Swift",
+      "issuer": "Infosys Springboard",
+      "image": "certificate-1.png",
+      "summary": "Swift fundamentals for iOS development \u2014 UIKit, SwiftUI, interaction handling."
+    },
+    {
+      "id": 2,
+      "title": "SQL",
+      "issuer": "HackerRank",
+      "image": "certificate-2.png",
+      "summary": "Database manipulation, querying, and complex SQL for data analysis."
+    },
+    {
+      "id": 3,
+      "title": "C Language",
+      "issuer": "CSC Champion \u2014 Tally Academy",
+      "image": "certificate-3.jpg",
+      "summary": "Core C: pointers, dynamic memory management, file I/O."
+    },
+    {
+      "id": 4,
+      "title": "HTML5 & Responsive Design",
+      "issuer": "Infosys Springboard",
+      "image": "certificate-4.png",
+      "summary": "Semantic HTML5 and responsive layout across multiple site builds."
+    },
+    {
+      "id": 5,
+      "title": "Microprocessors & Microcontrollers",
+      "issuer": "NPTEL",
+      "image": "certificate-5.jpg",
+      "summary": "Embedded systems integration, debugging, and performance tuning."
+    }
+  ],
+  "achievements": [
+    {
+      "id": 1,
+      "title": "Neo-Codeathon 2024 Winner",
+      "subtitle": "All India Neo Codeathon \u2014 February Edition",
+      "detail": "Won First Place, awarded a smartwatch and certificate for outstanding achievement.",
+      "image": "winner-1.png",
+      "link": "https://drive.google.com/file/d/1TWLyRruS8-JgnGA90t16oeG9TkjNaZWZ/view?usp=sharing"
+    },
+    {
+      "id": 2,
+      "title": "First Rank \u2014 1st Year",
+      "subtitle": "II Semester",
+      "detail": "Top of class, awarded Certificate of Appreciation.",
+      "image": "winner-2.png",
+      "link": "https://drive.google.com/file/d/1RGChb1jpM1M7yL4aYJV-mY7Aq-40FAxp/view?usp=sharing"
+    },
+    {
+      "id": 3,
+      "title": "First Rank \u2014 2nd Year",
+      "subtitle": "III Semester",
+      "detail": "Top of class, awarded Certificate of Appreciation.",
+      "image": "winner-3.png",
+      "link": "https://drive.google.com/file/d/1ENk3gZgxwTmr-8LqOQj0R0qIP7s8Z-aE/view?usp=sharing"
+    },
+    {
+      "id": 4,
+      "title": "Second Rank \u2014 3rd Year",
+      "subtitle": "V Semester",
+      "detail": "Second-highest ranked student, awarded Certificate of Appreciation.",
+      "image": "winner-4.png",
+      "link": "https://drive.google.com/file/d/1mQCwwWngOvG0hqDqOVO-lqMflSMshTfE/view?usp=drive_link"
+    }
+  ],
+  "conferences": [
+    {
+      "title": "Challenges and Scopes in Information and Communication Engineering",
+      "event": "ICCSICE'24",
+      "date": "7\u20138 March 2024",
+      "image": "Conference.png",
+      "link": "https://drive.google.com/file/d/148nrb_LQuCg-MTT21EF6PYxmS1xHekmH/view?usp=drive_link",
+      "id": "conf-1",
+      "location": "India",
+      "organizer": "ICCSICE'24",
+      "gallery": []
+    }
+  ],
+  "resume": {
+    "file": "resume.pdf",
+    "lastUpdated": "2026-07-01"
+  }
+}

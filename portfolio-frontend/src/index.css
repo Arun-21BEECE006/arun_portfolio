@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-900 text-paper font-body antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(79, 209, 197, 0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(255, 180, 84, 0.06), transparent);
+}
+
+::selection {
+  background: rgba(79, 209, 197, 0.3);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0E14;
+}
+::-webkit-scrollbar-thumb {
+  background: #232C3D;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3A4457;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+:focus-visible {
+  outline: 2px solid #4FD1C5;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.eyebrow {
+  @apply font-mono text-xs tracking-[0.2em] uppercase text-teal-400;
+}
+
+.section-pad {
+  @apply px-6 sm:px-10 lg:px-16 xl:px-24;
+}
