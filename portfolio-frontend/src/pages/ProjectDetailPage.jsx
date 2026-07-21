@@ -15,6 +15,7 @@ import {
 import { useContent } from "../context/ContentContext";
 import { img } from "../utils/images";
 import Footer from "../components/Footer";
+import LoadingScreen from "../components/LoadingScreen";
 
 const categoryStyle = {
   aiml: "bg-teal-400 text-ink-900 border-teal-300",
@@ -94,9 +95,11 @@ function GalleryLightbox({ images, index, onClose, onNav }) {
 
 export default function ProjectDetailPage() {
   const { id } = useParams();
-  const { content } = useContent();
+  const { content, loading } = useContent();
   const [lightboxIndex, setLightboxIndex] = useState(null);
   const project = (content.projects || []).find((p) => p.id === id);
+
+  if (loading) return <LoadingScreen />;
 
   if (!project) {
     return (

@@ -25,17 +25,7 @@ function ExperienceCard({ item, index, expanded, onToggle }) {
       transition={{ duration: 0.5, delay: index * 0.08 }}
       className="relative pl-14 sm:pl-16"
     >
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{
-          delay: 0.1 + index * 0.08,
-          type: "spring",
-          stiffness: 240,
-          damping: 16,
-        }}
-        className="absolute left-0 top-6 z-10"
-      >
+      <div className="absolute left-0 top-6 z-10">
         <div
           className={`flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border-2 ${
             item.type === "fulltime" ? "border-amber-400" : "border-teal-400"
@@ -48,7 +38,7 @@ function ExperienceCard({ item, index, expanded, onToggle }) {
             size={18}
           />
         </div>
-      </motion.div>
+      </div>
 
       <motion.div
         whileHover={{ y: -3 }}
