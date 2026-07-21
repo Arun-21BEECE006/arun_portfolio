@@ -95,17 +95,17 @@ export default function ResumeSection() {
                 <RiCalendarLine /> Last updated {resume.lastUpdated}
               </span>
             )}
-            <div className="flex items-center gap-2 ml-auto">
+            <div className="flex flex-wrap items-center gap-2 ml-auto">
               <a
                 href={resumeUrl}
                 download
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-teal-400 text-ink-900 text-sm font-semibold hover:bg-teal-300 transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-teal-400 text-ink-900 text-sm font-semibold hover:bg-teal-300 transition-colors whitespace-nowrap"
               >
                 <RiDownload2Line size={15} /> Download
               </a>
               <button
                 onClick={openAndPrint}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-ink-600 text-sm hover:border-amber-500 hover:text-amber-400 transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-ink-600 text-sm hover:border-amber-500 hover:text-amber-400 transition-colors whitespace-nowrap"
               >
                 <RiPrinterLine size={15} /> Print
               </button>
@@ -113,15 +113,24 @@ export default function ResumeSection() {
                 href={resumeUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-ink-600 text-sm hover:border-teal-400 hover:text-teal-300 transition-colors"
+                title="Open in new tab"
+                aria-label="Open resume in new tab"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-ink-600 text-sm hover:border-teal-400 hover:text-teal-300 transition-colors whitespace-nowrap"
               >
-                <RiExternalLinkLine size={15} /> Open in new tab
+                <RiExternalLinkLine size={15} /> Open
               </a>
             </div>
           </div>
 
-          <div className="bg-ink-950 aspect-[8.5/6] sm:aspect-[8.5/5]">
-            <iframe src={resumeUrl} title="Resume" className="w-full h-full" />
+          {/* Same modest preview box on every screen size — the page fits
+              to width inside it via "#view=FitH", and you scroll within
+              this box to move through pages, same as on desktop. */}
+          <div className="bg-ink-950 aspect-[8.5/5]">
+            <iframe
+              src={`${resumeUrl}#view=FitH`}
+              title="Resume"
+              className="w-full h-full"
+            />
           </div>
         </div>
       </div>

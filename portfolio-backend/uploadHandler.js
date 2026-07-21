@@ -56,47 +56,80 @@ function uploadBuffer(buffer, folder, originalname) {
   ensureConfigured();
   return new Promise((resolve, reject) => {
     const isPdf = /\.pdf$/i.test(originalname);
-    const stream = cloudinary.uploader.upload_stream(
-      {
-        folder: folderPath(folder),
-        resource_type: isPdf ? "raw" : "auto",
-        use_filename: true,
-        unique_filename: true,
-        overwrite: false,
-      },
-      (err, result) => {
-        if (err) return reject(err);
-        resolve({
-          url: result.secure_url,
-          name: result.public_id,
-          bytes: result.bytes,
-        });
-      },
-    );
+    const options = {
+      folder: folderPath(folder),
+      resource_type: isPdf ? "raw" : "auto",
+      use_filename: true,
+      unique_filename: true,
+      overwrite: false,
+    };
+    // PDFs need an explicit format so Cloudinary keeps a real ".pdf" extension
+    // on the delivered URL — without this, browsers often receive a generic
+    // "application/octet-stream" content type and force-download the file
+    // instead of previewing it inline (which is what an <iframe> needs).
+    if (isPdf) options.format = "pdf";
+
+    const stream = cloudinary.uploader.upload_stream(options, (err, result) => {
+      if (err) return reject(err);
+      resolve({
+        url: result.secure_url,
+        name: result.public_id,
+        bytes: result.bytes,
+        resourceType: result.resource_type,
+      });
+    });
     stream.end(buffer);
   });
 }
 
+// Cloudinary's resource listing is scoped per resource_type — "image" (which
+// covers png/jpg/webp/gif/svg here) and "raw" (PDFs) have to be queried
+// separately and merged, or raw files silently never show up.
 async function listMedia(folder) {
   ensureConfigured();
   const prefix = folderPath(folder);
-  const results = await cloudinary.api.resources({
-    type: "upload",
-    prefix,
-    max_results: 100,
-  });
-  return (results.resources || [])
+
+  const [imageResults, rawResults] = await Promise.all([
+    cloudinary.api.resources({
+      type: "upload",
+      resource_type: "image",
+      prefix,
+      max_results: 100,
+    }),
+    cloudinary.api.resources({
+      type: "upload",
+      resource_type: "raw",
+      prefix,
+      max_results: 100,
+    }),
+  ]);
+
+  const all = [
+    ...(imageResults.resources || []),
+    ...(rawResults.resources || []),
+  ];
+  return all
     .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
-    .map((r) => ({ name: r.public_id, url: r.secure_url }));
+    .map((r) => ({
+      name: r.public_id,
+      url: r.secure_url,
+      resourceType: r.resource_type,
+    }));
 }
 
+// Since we don't track each file's resource_type separately in the app's
+// data, try the common case (image) first and fall back to raw (PDFs) if
+// that comes back "not found" — this covers both without needing a lookup.
 async function deleteMedia(folder, publicId) {
   ensureConfigured();
-  // publicId comes back from listMedia/upload as the Cloudinary public_id
-  // (e.g. "portfolio/projects/abc123"), so no extra folder-prefixing needed.
-  const result = await cloudinary.uploader.destroy(publicId, {
+  let result = await cloudinary.uploader.destroy(publicId, {
     resource_type: "image",
   });
+  if (result.result === "not found") {
+    result = await cloudinary.uploader.destroy(publicId, {
+      resource_type: "raw",
+    });
+  }
   if (result.result !== "ok" && result.result !== "not found") {
     const err = new Error(`Cloudinary delete failed: ${result.result}`);
     err.status = 500;

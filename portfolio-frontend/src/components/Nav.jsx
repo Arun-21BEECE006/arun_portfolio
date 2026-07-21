@@ -23,15 +23,29 @@ export default function Nav() {
       .filter(Boolean);
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id);
+        const intersecting = entries.filter((e) => e.isIntersecting);
+        if (intersecting.length === 0) return;
+        // A batch can report multiple sections at once right at a boundary
+        // (e.g. one exiting and the next entering in the same frame), and
+        // the browser doesn't guarantee document order — so explicitly pick
+        // whichever one is furthest down the page to avoid the wrong
+        // (earlier) section winning the highlight.
+        const winner = intersecting.reduce((latest, entry) => {
+          const latestIndex = sections.findIndex(
+            (s) => s.id === latest.target.id,
+          );
+          const entryIndex = sections.findIndex(
+            (s) => s.id === entry.target.id,
+          );
+          return entryIndex > latestIndex ? entry : latest;
         });
+        setActive(winner.target.id);
       },
-      { rootMargin: "-40% 0px -50% 0px", threshold: 0 },
+      { rootMargin: "-15% 0px -65% 0px", threshold: 0 },
     );
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
-  }, []);
+  }, [content]);
 
   const handleClick = (id) => {
     setOpen(false);
