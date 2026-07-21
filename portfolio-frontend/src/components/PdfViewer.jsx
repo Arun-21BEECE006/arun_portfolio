@@ -21,6 +21,7 @@ export default function PdfViewer({ url, className = "" }) {
     let cancelled = false;
     let pdfDoc = null;
     let resizeTimeout = null;
+    let renderGeneration = 0;
 
     async function renderAllPages() {
       const container = containerRef.current;
@@ -29,10 +30,16 @@ export default function PdfViewer({ url, className = "" }) {
       const containerWidth = container.clientWidth;
       if (containerWidth === 0) return; // not laid out yet, skip this pass
 
+      // Each call gets its own generation number. If a newer call starts
+      // before this one finishes (e.g. the resize observer fires again
+      // mid-render on mobile as the layout settles), this older call must
+      // stop appending pages the moment it notices it's been superseded —
+      // otherwise both calls interleave and you get duplicated pages.
+      const myGeneration = ++renderGeneration;
       container.innerHTML = "";
 
       for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-        if (cancelled) return;
+        if (cancelled || myGeneration !== renderGeneration) return;
         const page = await pdfDoc.getPage(pageNum);
         const unscaledViewport = page.getViewport({ scale: 1 });
         // Render at device pixel ratio for crisp text on high-DPI phone
@@ -52,7 +59,7 @@ export default function PdfViewer({ url, className = "" }) {
 
         const ctx = canvas.getContext("2d");
         await page.render({ canvasContext: ctx, viewport }).promise;
-        if (cancelled) return;
+        if (cancelled || myGeneration !== renderGeneration) return;
 
         container.appendChild(canvas);
       }
