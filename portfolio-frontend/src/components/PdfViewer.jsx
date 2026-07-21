@@ -19,27 +19,15 @@ export default function PdfViewer({ url, className = "" }) {
   useEffect(() => {
     if (!url) return;
     let cancelled = false;
-    let pdfDoc = null;
-    let resizeTimeout = null;
-    let renderGeneration = 0;
 
-    async function renderAllPages() {
-      const container = containerRef.current;
-      if (!container || !pdfDoc) return;
-
+    async function renderAllPages(pdfDoc, container) {
       const containerWidth = container.clientWidth;
-      if (containerWidth === 0) return; // not laid out yet, skip this pass
+      if (containerWidth === 0) return;
 
-      // Each call gets its own generation number. If a newer call starts
-      // before this one finishes (e.g. the resize observer fires again
-      // mid-render on mobile as the layout settles), this older call must
-      // stop appending pages the moment it notices it's been superseded —
-      // otherwise both calls interleave and you get duplicated pages.
-      const myGeneration = ++renderGeneration;
       container.innerHTML = "";
 
       for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
-        if (cancelled || myGeneration !== renderGeneration) return;
+        if (cancelled) return;
         const page = await pdfDoc.getPage(pageNum);
         const unscaledViewport = page.getViewport({ scale: 1 });
         // Render at device pixel ratio for crisp text on high-DPI phone
@@ -59,7 +47,7 @@ export default function PdfViewer({ url, className = "" }) {
 
         const ctx = canvas.getContext("2d");
         await page.render({ canvasContext: ctx, viewport }).promise;
-        if (cancelled || myGeneration !== renderGeneration) return;
+        if (cancelled) return;
 
         container.appendChild(canvas);
       }
@@ -71,9 +59,12 @@ export default function PdfViewer({ url, className = "" }) {
         // pdfjs-dist requires the explicit object form — a bare string
         // throws "expected either `data`, `range`, or `url` parameter".
         const loadingTask = pdfjsLib.getDocument({ url });
-        pdfDoc = await loadingTask.promise;
+        const pdfDoc = await loadingTask.promise;
         if (cancelled) return;
-        await renderAllPages();
+
+        const container = containerRef.current;
+        if (!container) return;
+        await renderAllPages(pdfDoc, container);
         if (!cancelled) setStatus("ready");
       } catch (err) {
         if (!cancelled) {
@@ -86,20 +77,8 @@ export default function PdfViewer({ url, className = "" }) {
 
     load();
 
-    // Re-render (debounced) on container resize / device rotation so the
-    // pages always match the current available width.
-    const resizeObserver = new ResizeObserver(() => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        if (!cancelled && pdfDoc) renderAllPages();
-      }, 200);
-    });
-    if (containerRef.current) resizeObserver.observe(containerRef.current);
-
     return () => {
       cancelled = true;
-      clearTimeout(resizeTimeout);
-      resizeObserver.disconnect();
     };
   }, [url]);
 
@@ -127,6 +106,7 @@ export default function PdfViewer({ url, className = "" }) {
       <div
         ref={containerRef}
         className="w-full h-full overflow-y-auto bg-ink-950 p-2"
+        style={{ WebkitOverflowScrolling: "touch", touchAction: "pan-y" }}
       />
     </div>
   );
