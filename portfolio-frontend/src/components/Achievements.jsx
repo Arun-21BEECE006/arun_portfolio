@@ -18,9 +18,8 @@ function TrophyEntry({ achievement, index }) {
     >
       <motion.div
         initial={{ scale: 0, rotate: -60 }}
-        whileInView={{ scale: 1, rotate: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ type: "spring", stiffness: 260, damping: 14 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ type: "spring", stiffness: 260, damping: 14, delay: 0.1 }}
         className={`absolute left-0 top-1 z-10 md:top-2 ${left ? "md:left-auto md:-right-6" : "md:-left-6"}`}
       >
         <div className="relative w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 via-[#7B61FF] to-amber-400 p-[2px] shadow-glow">
@@ -76,8 +75,9 @@ export default function Achievements() {
     offset: ["start end", "end start"],
   });
   const spineProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 25,
+    stiffness: 300,
+    damping: 40,
+    mass: 0.5,
   });
 
   return (

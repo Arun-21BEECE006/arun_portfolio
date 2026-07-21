@@ -27,8 +27,7 @@ function ExperienceCard({ item, index, expanded, onToggle }) {
     >
       <motion.div
         initial={{ scale: 0 }}
-        whileInView={{ scale: 1 }}
-        viewport={{ once: true, margin: "-60px" }}
+        animate={{ scale: 1 }}
         transition={{
           delay: 0.1 + index * 0.08,
           type: "spring",

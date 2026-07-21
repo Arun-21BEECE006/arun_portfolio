@@ -7,6 +7,7 @@ import {
 } from "react-icons/ri";
 import { useContent } from "../context/ContentContext";
 import { img } from "../utils/images";
+import PdfViewer from "./PdfViewer";
 
 function useLiveCounters(content) {
   const technologies = new Set();
@@ -122,15 +123,22 @@ export default function ResumeSection() {
             </div>
           </div>
 
-          {/* Same modest preview box on every screen size — the page fits
-              to width inside it via "#view=FitH", and you scroll within
-              this box to move through pages, same as on desktop. */}
-          <div className="bg-ink-950 aspect-[8.5/5]">
+          {/* Laptop/desktop: the browser's native PDF viewer works fine and
+              is simpler, so just use it directly with fit-width sizing. */}
+          <div className="hidden lg:block bg-ink-950 aspect-[8.5/5]">
             <iframe
               src={`${resumeUrl}#view=FitH`}
               title="Resume"
               className="w-full h-full"
             />
+          </div>
+
+          {/* Mobile & tablet: many mobile browsers (notably Android Chrome)
+              show a generic "tap to open" card instead of actually
+              previewing an embedded PDF, so we render it ourselves with
+              PDF.js there instead — same box size, consistent look. */}
+          <div className="lg:hidden bg-ink-950 aspect-[8.5/5]">
+            <PdfViewer url={resumeUrl} className="w-full h-full" />
           </div>
         </div>
       </div>
