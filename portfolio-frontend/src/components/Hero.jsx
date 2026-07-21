@@ -51,7 +51,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-28 pb-16 section-pad bg-grid-pattern bg-grid"
+      className="relative min-h-screen flex items-center pt-28 pb-16 section-pad bg-grid-pattern bg-grid overflow-x-hidden"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-ink-900/40 to-ink-900 pointer-events-none" />
 

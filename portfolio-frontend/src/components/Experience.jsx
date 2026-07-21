@@ -81,6 +81,15 @@ function ExperienceCard({ item, index, expanded, onToggle }) {
               >
                 {item.period}
               </span>
+              <span
+                className={`rounded-full border px-3 py-0.5 font-mono text-[11px] uppercase tracking-wide ${
+                  item.type === "fulltime"
+                    ? "border-amber-500/40 bg-amber-500/10 text-amber-400"
+                    : "border-teal-400/40 bg-teal-400/10 text-teal-300"
+                }`}
+              >
+                {item.type === "fulltime" ? "Full-Time" : "Internship"}
+              </span>
             </div>
             <p className="mt-1.5 text-sm sm:text-base font-medium text-[#B7A9FF]">
               {item.title}

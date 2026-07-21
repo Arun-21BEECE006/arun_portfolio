@@ -27,7 +27,7 @@ export default function Nav() {
           if (entry.isIntersecting) setActive(entry.target.id);
         });
       },
-      { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
+      { rootMargin: "-40% 0px -50% 0px", threshold: 0 },
     );
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
@@ -41,7 +41,9 @@ export default function Nav() {
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-ink-900/85 backdrop-blur-md border-b border-ink-700" : "bg-transparent"
+        scrolled
+          ? "bg-ink-900/85 backdrop-blur-md border-b border-ink-700"
+          : "bg-transparent"
       }`}
     >
       <div className="section-pad flex items-center justify-between h-16 lg:h-20">
@@ -52,7 +54,7 @@ export default function Nav() {
           Arun<span className="text-teal-400">.</span>
         </button>
 
-        <nav className="hidden md:flex items-center gap-1 font-mono text-xs uppercase tracking-wider">
+        <nav className="hidden lg:flex items-center gap-1 font-mono text-xs uppercase tracking-wider">
           {nav.map((item) => (
             <button
               key={item.id}
@@ -70,13 +72,13 @@ export default function Nav() {
 
         <a
           href={`mailto:${profile.email}`}
-          className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/50 text-amber-400 font-mono text-xs uppercase tracking-wider hover:bg-amber-500/10 transition-colors"
+          className="hidden lg:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/50 text-amber-400 font-mono text-xs uppercase tracking-wider hover:bg-amber-500/10 transition-colors"
         >
           Hire Me
         </a>
 
         <button
-          className="md:hidden text-2xl text-paper"
+          className="lg:hidden text-2xl text-paper"
           onClick={() => setOpen((o) => !o)}
           aria-label={open ? "Close menu" : "Open menu"}
         >
@@ -85,13 +87,15 @@ export default function Nav() {
       </div>
 
       {open && (
-        <div className="md:hidden bg-ink-900/97 backdrop-blur-md border-t border-ink-700 px-6 py-4 flex flex-col gap-1">
+        <div className="lg:hidden bg-ink-900/97 backdrop-blur-md border-t border-ink-700 px-6 py-4 flex flex-col gap-1 max-h-[calc(100dvh-4rem)] overflow-y-auto">
           {nav.map((item) => (
             <button
               key={item.id}
               onClick={() => handleClick(item.id)}
               className={`text-left px-4 py-3 rounded-lg font-mono text-sm uppercase tracking-wider ${
-                active === item.id ? "bg-teal-400/10 text-teal-300" : "text-muted"
+                active === item.id
+                  ? "bg-teal-400/10 text-teal-300"
+                  : "text-muted"
               }`}
             >
               {item.label}

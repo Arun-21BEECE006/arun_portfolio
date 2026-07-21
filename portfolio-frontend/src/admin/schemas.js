@@ -246,6 +246,7 @@ export const profileSchema = {
     { name: "tagline", label: "Tagline", type: "textarea" },
     { name: "bio", label: "Bio Paragraphs (one per line)", type: "lines" },
     { name: "email", label: "Email", type: "text" },
+    { name: "stats", label: "About Section Stat Cards", type: "kvlines" },
     {
       name: "experienceYears",
       label: "Years of Experience (leave blank to hide)",

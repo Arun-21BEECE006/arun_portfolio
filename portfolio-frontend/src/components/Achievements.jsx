@@ -73,7 +73,7 @@ export default function Achievements() {
   const timelineRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: timelineRef,
-    offset: ["start 80%", "end 55%"],
+    offset: ["start end", "end start"],
   });
   const spineProgress = useSpring(scrollYProgress, {
     stiffness: 90,
@@ -96,8 +96,8 @@ export default function Achievements() {
         <div ref={timelineRef} className="relative">
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-ink-600 md:-translate-x-1/2" />
           <motion.div
-            style={{ scaleY: spineProgress }}
-            className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[3px] origin-top -translate-x-1/2 rounded-full bg-gradient-to-b from-teal-400 via-[#7B61FF] to-amber-400 shadow-glow"
+            style={{ scaleY: spineProgress, x: "-50%" }}
+            className="absolute left-6 md:left-1/2 top-0 bottom-0 w-[3px] origin-top rounded-full bg-gradient-to-b from-teal-400 via-[#7B61FF] to-amber-400 shadow-glow"
           />
           <div className="space-y-10 md:space-y-14">
             {achievements.map((a, i) => (
