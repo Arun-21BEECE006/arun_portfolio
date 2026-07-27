@@ -3,6 +3,7 @@ import { motion, useScroll, useSpring } from "framer-motion";
 import { RiExternalLinkLine } from "react-icons/ri";
 import { useContent } from "../context/ContentContext";
 import { getAchievementIcon } from "../utils/icons";
+import { sortByDateDesc } from "../utils/chrono";
 
 function TrophyEntry({ achievement, index }) {
   const Icon = getAchievementIcon(achievement.icon);
@@ -65,7 +66,7 @@ function TrophyEntry({ achievement, index }) {
 
 export default function Achievements() {
   const { content } = useContent();
-  const achievements = content.achievements || [];
+  const achievements = sortByDateDesc(content.achievements || [], "date");
   const timelineRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: timelineRef,

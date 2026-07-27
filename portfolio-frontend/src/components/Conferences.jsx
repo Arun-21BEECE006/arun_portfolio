@@ -12,6 +12,7 @@ import {
 } from "react-icons/ri";
 import { useContent } from "../context/ContentContext";
 import { img } from "../utils/images";
+import { sortByDateDesc } from "../utils/chrono";
 
 function Lightbox({ src, alt, onClose }) {
   if (!src) return null;
@@ -201,7 +202,7 @@ function ConferenceCard({ conf, index }) {
 
 export default function Conferences() {
   const { content } = useContent();
-  const conferences = content.conferences || [];
+  const conferences = sortByDateDesc(content.conferences || [], "date");
 
   if (conferences.length === 0) return null;
 

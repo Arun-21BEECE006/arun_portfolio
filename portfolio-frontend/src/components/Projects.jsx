@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { RiGithubLine, RiArrowRightLine } from "react-icons/ri";
 import { useContent } from "../context/ContentContext";
 import { img } from "../utils/images";
+import { sortByDateDesc } from "../utils/chrono";
 import ProjectCarousel from "./ProjectCarousel";
 
 const filters = [
@@ -22,7 +23,7 @@ const statusStyle = {
 
 export default function Projects() {
   const { content } = useContent();
-  const projects = content.projects;
+  const projects = sortByDateDesc(content.projects || [], "duration");
   const [filter, setFilter] = useState("all");
   const visible =
     filter === "all" ? projects : projects.filter((p) => p.category === filter);

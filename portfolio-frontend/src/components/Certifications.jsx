@@ -10,6 +10,7 @@ import {
 } from "react-icons/ri";
 import { useContent } from "../context/ContentContext";
 import { img } from "../utils/images";
+import { sortByDateDesc } from "../utils/chrono";
 
 function Lightbox({ src, alt, onClose }) {
   if (!src) return null;
@@ -173,7 +174,10 @@ function CertificateCard({ cert, index }) {
 
 export default function Certifications() {
   const { content } = useContent();
-  const certifications = content.certifications || [];
+  const certifications = sortByDateDesc(
+    content.certifications || [],
+    "issueDate",
+  );
 
   return (
     <section id="certifications" className="section-pad py-24 lg:py-32">

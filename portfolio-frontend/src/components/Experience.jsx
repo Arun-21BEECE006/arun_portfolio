@@ -7,6 +7,7 @@ import {
   RiBriefcaseLine,
 } from "react-icons/ri";
 import { useContent } from "../context/ContentContext";
+import { sortByDateDesc } from "../utils/chrono";
 
 const filters = [
   { id: "all", label: "All" },
@@ -155,7 +156,7 @@ function ExperienceCard({ item, index, expanded, onToggle }) {
 
 export default function Experience() {
   const { content } = useContent();
-  const experience = content.experience || [];
+  const experience = sortByDateDesc(content.experience || [], "period");
   const [filter, setFilter] = useState("all");
   const [expandedId, setExpandedId] = useState(experience[0]?.id ?? null);
   const visible =

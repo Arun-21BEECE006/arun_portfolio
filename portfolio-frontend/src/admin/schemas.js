@@ -218,6 +218,11 @@ export const collectionSchemas = {
     fields: [
       { name: "title", label: "Title", type: "text", required: true },
       { name: "subtitle", label: "Subtitle", type: "text" },
+      {
+        name: "date",
+        label: "Date (e.g. 2024-02, or March 2024)",
+        type: "text",
+      },
       { name: "detail", label: "Detail", type: "textarea" },
       {
         name: "icon",
