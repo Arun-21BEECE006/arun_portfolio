@@ -76,26 +76,24 @@ export default function AIAssistant() {
 
   return createPortal(
     <>
-      <motion.button
-        onClick={() => setOpen((o) => !o)}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        whileHover={{ scale: 1.06 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label="Open Arun's AI Portfolio Assistant"
-        style={{
-          bottom: "calc(1.25rem + env(safe-area-inset-bottom))",
-          right: "calc(1.25rem + env(safe-area-inset-right))",
-        }}
-        className="fixed sm:bottom-8 sm:right-8 z-[9999] w-14 h-14 rounded-full bg-ink-800/80 backdrop-blur-md border border-teal-400/40 shadow-glow grid place-items-center"
-      >
-        <span className="absolute inset-0 rounded-full bg-teal-400/20 animate-ping" />
-        {open ? (
-          <RiCloseLine className="relative text-paper" size={22} />
-        ) : (
+      {!open && (
+        <motion.button
+          onClick={() => setOpen(true)}
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Open Arun's AI Portfolio Assistant"
+          style={{
+            bottom: "calc(1.25rem + env(safe-area-inset-bottom))",
+            right: "calc(1.25rem + env(safe-area-inset-right))",
+          }}
+          className="fixed sm:bottom-8 sm:right-8 z-[9999] w-14 h-14 rounded-full bg-ink-800/80 backdrop-blur-md border border-teal-400/40 shadow-glow grid place-items-center"
+        >
+          <span className="absolute inset-0 rounded-full bg-teal-400/20 animate-ping" />
           <RiSparkling2Line className="relative text-teal-300" size={22} />
-        )}
-      </motion.button>
+        </motion.button>
+      )}
 
       <AnimatePresence>
         {open && (
@@ -138,7 +136,7 @@ export default function AIAssistant() {
                 <button
                   onClick={() => setOpen(false)}
                   aria-label="Close"
-                  className="shrink-0 w-8 h-8 grid place-items-center rounded-full text-muted hover:text-paper transition-colors sm:hidden"
+                  className="shrink-0 w-8 h-8 grid place-items-center rounded-full text-muted hover:text-paper transition-colors"
                 >
                   <RiCloseLine size={20} />
                 </button>
