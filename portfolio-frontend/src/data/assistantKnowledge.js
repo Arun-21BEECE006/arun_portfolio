@@ -120,14 +120,23 @@ export function answerQuery(rawQuery, content) {
   }
   if (/\bproject(s)?\b/.test(lower) && !findProjectMatch(lower, projects)) {
     const list = (projects || [])
-      .slice(0, 6)
       .map((p) => `• ${p.title} — ${p.subtitle || p.tags?.join(", ")}`)
       .join("\n");
     return {
-      text: `Here are some of Arun's projects:\n${list}\n\nScrolling you to the full Projects section.`,
+      text: `Here are all of Arun's projects:\n${list}\n\nScrolling you to the full Projects section.`,
       action: { type: "scroll", target: "projects" },
     };
   }
+  // if (/\bproject(s)?\b/.test(lower) && !findProjectMatch(lower, projects)) {
+  //   const list = (projects || [])
+  //     .slice(0, 6)
+  //     .map((p) => `• ${p.title} — ${p.subtitle || p.tags?.join(", ")}`)
+  //     .join("\n");
+  //   return {
+  //     text: `Here are some of Arun's projects:\n${list}\n\nScrolling you to the full Projects section.`,
+  //     action: { type: "scroll", target: "projects" },
+  //   };
+  // }
   if (/\bcertificat/.test(lower)) {
     const list = (certifications || []).map((c) => `• ${c.title} — ${c.issuer}`).join("\n");
     return { text: `Arun's certifications:\n${list}`, action: { type: "scroll", target: "certifications" } };
