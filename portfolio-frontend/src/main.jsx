@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App.jsx";
 import Admin from "./admin/Admin.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import ProjectDetailPage from "./pages/ProjectDetailPage.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import { ContentProvider } from "./context/ContentContext.jsx";
