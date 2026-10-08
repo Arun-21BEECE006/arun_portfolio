@@ -130,11 +130,37 @@ async function updateItem(collection, id, patch) {
     err.status = 404;
     throw err;
   }
-  list[idx] = { ...list[idx], ...patch, id: list[idx].id };
+  const requestedId = patch.id && String(patch.id).trim();
+  const newId = requestedId || list[idx].id;
+  if (newId !== list[idx].id) {
+    const clash = list.some((item, i) => i !== idx && String(item.id) === newId);
+    if (clash) {
+      const err = new Error(`An item with id "${newId}" already exists in ${collection}`);
+      err.status = 409;
+      throw err;
+    }
+  }
+  list[idx] = { ...list[idx], ...patch, id: newId };
   content[collection] = list;
   await writeContent(content);
   return list[idx];
 }
+
+// async function updateItem(collection, id, patch) {
+//   assertCollection(collection);
+//   const content = await readContent();
+//   const list = content[collection] || [];
+//   const idx = list.findIndex((i) => String(i.id) === String(id));
+//   if (idx === -1) {
+//     const err = new Error("Item not found");
+//     err.status = 404;
+//     throw err;
+//   }
+//   list[idx] = { ...list[idx], ...patch, id: list[idx].id };
+//   content[collection] = list;
+//   await writeContent(content);
+//   return list[idx];
+// }
 
 async function deleteItem(collection, id) {
   assertCollection(collection);

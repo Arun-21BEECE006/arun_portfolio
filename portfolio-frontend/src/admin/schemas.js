@@ -15,6 +15,11 @@ export const collectionSchemas = {
   projects: {
     label: "Projects",
     fields: [
+      {
+        name: "id",
+        label: "Custom URL Slug (lowercase, no spaces — e.g. devlink, oral-cancer). Leave blank to auto-generate.",
+        type: "text",
+      },
       { name: "title", label: "Title", type: "text", required: true },
       { name: "subtitle", label: "Subtitle", type: "text" },
       {
