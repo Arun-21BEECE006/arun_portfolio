@@ -17,6 +17,7 @@ createRoot(document.getElementById("root")).render(
           <Route path="/" element={<App />} />
           <Route path="/projects/:id" element={<ProjectDetailPage />} />
           <Route path="/admin/*" element={<Admin />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </ContentProvider>
